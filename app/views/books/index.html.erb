@@ -8,6 +8,20 @@
     </tr>
   </thead>
   <tbody>
-    
+  <% @books.each do |book| %>
+    <tr>
+      <td><%= book.title %></td>
+      <td><%= book.body %></td>
+      <td>
+        <a href="/books/:id">Show</a>
+      </td>
+      <td>
+        <a href="/books/:id/edit">Edit</a>
+      </td>
+      <td>
+        <a href="/books/:id">Destroy</a>
+      </td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
