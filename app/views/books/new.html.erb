@@ -1,4 +1,15 @@
 <h2>New Book</h2>
+
+<% if @book.errors.any? %>
+  <p><%= @book.errors.count %> errors prohibited this book from being saved: </p>
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
 <!-- form_with内のmodel: Book.new はcontrollerで定義。ここではインスタンス変数を使う -->
 <%= form_with model: @book, url: books_path, method: :post do |f| %>
   <div class="field">
