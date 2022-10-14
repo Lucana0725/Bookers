@@ -9,7 +9,8 @@ class BooksController < ApplicationController
   def create
     book = Book.new(book_params)
     book.save
-    redirect_to '/books' # showを作ってないので一旦indexへ変遷させる
+    # redirect_to '/books'  showを作ってないので一旦indexへ遷移させる
+    redirect_to book_path(book.id)  # showを作ったのでshowへ。
   end
 
   def index
