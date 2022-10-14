@@ -8,11 +8,11 @@ class BooksController < ApplicationController
   # createアクションの作成
   def create
     # validation実装時は条件分岐でエラー文を表示させる際、renderで別のアクションを実行するため、@をつけないとrender先のviewで表示できなくなる。
-    book = Book.new(book_params)
-    if book.save
+    @book = Book.new(book_params)
+    if @book.save
       flash[:notice] = "Book was successfully created."
       # redirect_to '/books'  showを作ってないので一旦indexへ遷移させる
-      redirect_to book_path(book.id)  # showを作ったのでshowへ遷移。
+      redirect_to book_path(@book.id)  # showを作ったのでshowへ遷移。
     else
       render :new
     end
