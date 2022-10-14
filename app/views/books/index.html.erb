@@ -21,7 +21,7 @@
       </td>
       <td>
         <!--<a href="/books/:id">Destroy</a>-->
-        <%= link_to "Destroy" %>
+        <%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "削除します。よろしいですか？" %>
       </td>
     </tr>
   <% end %>
