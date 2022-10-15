@@ -1,9 +1,12 @@
 class BooksController < ApplicationController
-  def new
-    # Bookモデルをもとにオブジェクトを作成、インスタンス変数として保持してviewで用いる
-    # (= Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する)
-    @book = Book.new
-  end
+  # indexとnewを同一ページ上に表示するにあたってnewのviewは表示しない(index上で表示されるため)し、
+  # @book = Book.new もindexアクション内で実行するため、newアクション自体が不要になった。
+  
+  # def new
+  #   # Bookモデルをもとにオブジェクトを作成、インスタンス変数として保持してviewで用いる
+  #   # (= Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する)
+  #   @book = Book.new
+  # end
   
   # createアクションの作成
   def create
@@ -14,12 +17,15 @@ class BooksController < ApplicationController
       # redirect_to '/books'  showを作ってないので一旦indexへ遷移させる
       redirect_to book_path(@book.id)  # showを作ったのでshowへ遷移。
     else
-      render :new
+      @books = Book.all
+      render :index
     end
   end
 
   def index
     @books = Book.all
+    
+    @book = Book.new
   end
 
   def show
