@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   # get 'books' => 'books#index'
   # get 'books/show'
   # get 'books/edit'
-  get '/' => 'homes#top'
+  # get '/' => 'homes#top'
+  root to: 'homes#top'
   resources :books
   
   # 【補足】getの後の''にはURLを、=>後の''にはアクション名が入る
